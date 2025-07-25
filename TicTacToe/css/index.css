@@ -1,33 +1,88 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding-top: 50px;
+body{
+    background-image: url('../resources/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    text-align: center;
+    font-family: Open Sans;
+    overflow: hidden;
 }
 
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#title{
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: White;
+    font-size: 3rem;
+    margin-bottom: 10rem;
+}
+h1{
+    background-color: hsla(0, 0%, 100%, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 10px 15px;
+    width: 70%;
+}
+#startBtn{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: none;
+    background-color: hsl(120, 100%, 40%);
+    color: white;
+    background-image: url('../resources/play-button-arrowhead.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+    transition: .5s background-color ease;
 }
 
-.popup-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
+#startBtn:hover{
+    background-color: hsl(120, 100%, 50%);
 }
 
-.hidden {
-  display: none;
+.popup{
+    border: 1px solid red;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top:0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-button {
-  margin: 10px;
-  padding: 10px 20px;
+.popup-content{
+    padding: 20px;
+    background-color: white;
+    height: 20rem;
+    width: 40rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+#close{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    position: relative;
+    left: 37.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: hsl(0, 100%, 50%);
+    color: white;
+    font-style: bold;
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    transition: .5s background-color ease;
+}
+
+#close:hover{
+    background-color: hsl(0, 100%, 60%);
+}
+
+.hidden{
+    display: none;
 }
