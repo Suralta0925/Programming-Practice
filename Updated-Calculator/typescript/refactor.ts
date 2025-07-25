@@ -1,0 +1,2 @@
+
+function number(a: number)

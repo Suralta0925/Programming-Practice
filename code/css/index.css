@@ -1,0 +1,11 @@
+body{
+    margin:0;
+    padding:0;
+    border: 1px solid red;
+    height: 95vh;
+}
+div{
+    background-color: aqua;
+    height: 100px;
+    width: 100px;
+}

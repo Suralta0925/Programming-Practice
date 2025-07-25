@@ -1,0 +1,133 @@
+.change{
+    color: white !important;
+}
+.change:active{
+    color:black !important;
+}
+.nums{
+    color:white;
+}
+button{
+    border: 1px solid grey;
+    font-size: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+.rows{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height:fit-content;
+    margin-bottom: 10px;
+    max-width: 370px;
+}
+body{
+
+    display: flex;
+    justify-content: center;
+}
+.device{
+    background-color: white;
+    display: flex;
+    justify-content: right;
+    border: 2px solid blue;
+    border-radius: 20px;
+    width: 700px;
+    height: 320px;
+    overflow: hidden;
+}
+.num-all{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+.display{
+    width:fit-content;
+}
+.operators{
+    color:rgb(219, 15, 234);
+}
+.display-container{
+    color: white;
+    padding-right: 10px;
+    display: grid;
+    justify-content: end;
+    align-items: center;
+    height:50px;
+    row-gap: 0;
+}
+#ans,#ans2{
+    display: flex;
+    justify-content: end;
+    margin: 0;
+    padding: 0;
+}
+#ans{
+    font-size: 20px;
+}
+#ans2{
+    font-size: 15px;
+    color: grey;
+}
+#equals{
+    color: white;
+    background-color: rgb(44, 76, 170);
+}
+.num-container{
+    border: 2px solid grey;
+    border-radius: 20px 20px 0 0;
+    width: 330px;
+    height: fit-content;
+}
+button:active{
+    background-color: white;
+    color: black;
+    cursor: context-menu;
+}
+button:hover{
+    cursor: pointer;
+}
+#equals:active{
+    background-color: rgba(114, 148, 250, 0.847) ;  
+}
+input{
+    display: none;
+}
+img{
+    cursor: pointer;
+    margin-left: 10px;
+    max-height: 20px;
+    height: fit-content;
+}
+@media screen and (max-width:700px){
+    #horizontal{
+        display: none;
+    }
+    .device{
+        width: 330px;
+        height: fit-content;
+    }
+    button{
+        font-size: 25px;
+        width:75px;
+        height:75px;
+    }
+    .display-container{
+        height:100px;
+    }
+    #ans{
+        font-size: 30px;
+    }
+    #ans2{
+        font-size: 20px;
+    }
+    img{
+        cursor: pointer;
+        margin-left: 10px;
+        max-height: 30px;
+        height: fit-content;
+    }
+    
+}

@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    font-size: 18px;
+    padding: 100px 50px;
+}
+h1{
+    text-align: center;
+    font-size: 3em;
+}
+
+#stopwatchContainer{
+    display: flex;
+    height: 30vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    border-radius: 15px;
+}
+
+#stopWatch{
+    font-size: 3rem;
+    font-family: monospace;
+    color: hsl(0, 0%, 30%);
+    margin-bottom: 50px;
+}
+
+button{
+    padding: 15px 40px;
+    border-radius: 10px;
+    margin-right: 15px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+#start{
+    background-color: green;
+}
+#stop{
+    background-color: red;
+}
+#reset{
+    background-color: hsl(195, 83%, 50%);
+}
+

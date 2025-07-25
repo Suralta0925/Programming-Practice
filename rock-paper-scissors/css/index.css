@@ -1,0 +1,62 @@
+body{
+    font-size: 18px;
+    height: 95vh;
+}
+h1{
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 4rem;
+}
+#choices{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5rem;
+
+    
+}
+button{
+    height: 150px;
+    width: 150px;
+    font-size: 4rem;
+    border-radius: 100%;
+    border: none;
+    background-color: hsl(180, 100%, 70%);
+    transition: background-color 300ms ease;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: hsl(180, 100%, 45%);
+}
+
+#playerScore,
+#computerScore,
+#playerDisplay,
+#computerDisplay,
+#resultDisplay{
+    text-align: center;
+}
+
+#resultDisplay,
+#computerDisplay{
+    margin-bottom: 3rem;
+}
+
+#resultDisplay{
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+#playerDisplay,
+#computerDisplay,
+#playerScore,
+#computerScore{
+    font-size: 2rem;
+}
+
+.win{
+    color:green;
+}
+.lose{
+    color: red;
+}
