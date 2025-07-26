@@ -1,13 +1,20 @@
 import { UI } from '../interface/UI';
 
 class popUp implements UI{
-    showUI(state: string): void{
+    showUI(state: string, button : string): void{
         const popup = document.getElementById("popup") as HTMLDivElement;
-        if (state == "open"){
+        const gamePaused = document.getElementById("gamePaused") as HTMLDivElement;
+        if (state == "open" && button == "popup"){
             popup.classList.remove("hidden")
         }
-        else if(state == "close"){
+        else if(state == "close" && button == "popup"){
             popup.classList.add("hidden");
+        }
+        else if(state == "open" && button == "gamePaused"){
+            gamePaused.classList.remove("hidden");
+        }
+        else if(state == "close" && button == "gamePaused"){
+            gamePaused.classList.add("hidden");
         }
     }
 }
@@ -50,27 +57,32 @@ class UIFactory{
 
 window.onload = () => {
     const screenUI = UIFactory.createUI(UIType.showScreen) as screen;
-    screenUI.showUI("startArea");
+    screenUI.showUI("gameArea");
 
     const main = document.getElementById("main") as HTMLDivElement;
-
     main.addEventListener("click", (event) => {
         const target = event.target as HTMLElement;
-
         switch(target.id){
             case  "startBtn":
-                UIFactory.createUI(UIType.PopUp).showUI("open")
+                UIFactory.createUI(UIType.PopUp).showUI("open", "popup")
                 break;
             case "close":
-                UIFactory.createUI(UIType.PopUp).showUI("close");
+                UIFactory.createUI(UIType.PopUp).showUI("close", "popup");
                 break;
             case "continue":
                 screenUI.showUI("gameArea");
                 break;
             case "back":
-                console.log("working")
+                UIFactory.createUI(UIType.PopUp).showUI("open", "gamePaused");
+                break;
+            case "unpause":
+                UIFactory.createUI(UIType.PopUp).showUI("close", "gamePaused");
+                break;
+            case "Home":
                 screenUI.showUI("startArea");
                 break;
         }
+        
+        
     });
 };

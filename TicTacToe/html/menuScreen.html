@@ -29,8 +29,44 @@
     </template>
 
     <template id="gameArea">
-    <h1>Game Area</h1>
-    <button id="back">Back</button>
+        <button id="back"> l l</button>
+        <div id="gameContainer">
+            <div id="game">
+                <div id="scoreContainer">
+                    <div id="playerDisplay">PLAYER: 0</div>
+                    <div id="computerDisplay">COMPUTER: 0</div>
+                </div>
+
+                <div id="mainGame">
+                    <div class="buttons">
+                        <button class="play"></button>
+                        <button class="play"></button>
+                        <button class="play"></button>
+                    </div>
+                    <div class="buttons">
+                        <button class="play"></button>
+                        <button class="play"></button>
+                        <button class="play"></button>
+                    </div>
+                    <div class="buttons">
+                        <button class="play">O</button>
+                        <button class="play">X</button>
+                        <button class="play"></button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div id="gamePaused" class="">
+            <div id="gameState">
+            <div id="stateTitle">Game Paused</div>
+            <button id="unpause">Continue</button>
+            <button id="Home">Home</button>
+        </div>
+        </div>
+        
+
     </template>
     
     <script type="module" src="../javascript/UI/Impl/UI_Impl.js"></script>

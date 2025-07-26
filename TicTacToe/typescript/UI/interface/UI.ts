@@ -1,3 +1,3 @@
 export interface UI{
-    showUI(widget?: string): void;
+    showUI(ui: string, widget?: string): void;
 }
