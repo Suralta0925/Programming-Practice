@@ -17,7 +17,9 @@ class screen {
             const content = template.content.cloneNode(true);
             main.innerHTML = "";
             main.appendChild(content);
+            return main;
         }
+        return null;
     }
 }
 var UIType;
@@ -37,16 +39,11 @@ class UIFactory {
         }
     }
 }
-const template = document.getElementById("startArea");
-const doc = template.content.cloneNode(true);
-const startScreen = document.getElementById("main");
-startScreen === null || startScreen === void 0 ? void 0 : startScreen.appendChild(doc);
 window.onload = () => {
-    UIFactory.createUI(UIType.showScreen).showUI("startArea");
-};
-setTimeout(() => {
-    const startBtn = startScreen === null || startScreen === void 0 ? void 0 : startScreen.querySelector("#startBtn");
-    const closeBtn = startScreen === null || startScreen === void 0 ? void 0 : startScreen.querySelector("#close");
+    const ui = UIFactory.createUI(UIType.showScreen);
+    const container = ui.showUI("startArea");
+    const startBtn = container === null || container === void 0 ? void 0 : container.querySelector("#startBtn");
+    const closeBtn = container === null || container === void 0 ? void 0 : container.querySelector("#close");
     console.log(startBtn);
     startBtn === null || startBtn === void 0 ? void 0 : startBtn.addEventListener("click", () => {
         UIFactory.createUI(UIType.PopUp).showUI("open");
@@ -54,5 +51,5 @@ setTimeout(() => {
     closeBtn === null || closeBtn === void 0 ? void 0 : closeBtn.addEventListener("click", () => {
         UIFactory.createUI(UIType.PopUp).showUI("close");
     });
-}, 100);
+};
 export {};

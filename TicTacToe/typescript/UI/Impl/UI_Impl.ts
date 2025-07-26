@@ -13,14 +13,16 @@ class popUp implements UI{
 }
 
 class screen implements UI{
-    showUI(id:string): void {
+    showUI(id:string): HTMLElement | null {
             const template = document.getElementById(id) as HTMLTemplateElement;
             const main = document.getElementById('main') as HTMLDivElement;
             if (main && template){
                 const content = template.content.cloneNode(true);
                 main.innerHTML = "";
                 main.appendChild(content);
+                return main;
             }
+            return null;
     }
 }
 
@@ -44,20 +46,15 @@ class UIFactory{
     }
 }
 
-const template = document.getElementById("startArea") as HTMLTemplateElement;
-const doc = template.content.cloneNode(true) as DocumentFragment;
-const startScreen = document.getElementById("main")
-startScreen?.appendChild(doc)
-
         
 
 window.onload = () => {
-    UIFactory.createUI(UIType.showScreen).showUI("startArea");
-}
+    const ui = UIFactory.createUI(UIType.showScreen) as screen;
+    const container = ui.showUI("startArea");
 
-setTimeout(()=>{
-    const startBtn = startScreen?.querySelector("#startBtn") as HTMLButtonElement;
-    const closeBtn = startScreen?.querySelector("#close") as HTMLButtonElement;
+    const startBtn = container?.querySelector("#startBtn") as HTMLButtonElement;
+    const closeBtn = container?.querySelector("#close") as HTMLButtonElement;
+    
     console.log(startBtn);
     startBtn?.addEventListener("click", (): void => {
         UIFactory.createUI(UIType.PopUp).showUI("open")
@@ -66,4 +63,6 @@ setTimeout(()=>{
     closeBtn?.addEventListener("click", (): void => {
         UIFactory.createUI(UIType.PopUp).showUI("close")
     })
-}, 100)
+}
+
+    
