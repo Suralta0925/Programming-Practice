@@ -40,20 +40,26 @@ class UIFactory {
     }
 }
 window.onload = () => {
-    const ui = UIFactory.createUI(UIType.showScreen);
-    const container = ui.showUI("startArea");
-    const gameArea = ui.showUI;
-    const startBtn = container === null || container === void 0 ? void 0 : container.querySelector("#startBtn");
-    const closeBtn = container === null || container === void 0 ? void 0 : container.querySelector("#close");
-    const proceed = container === null || container === void 0 ? void 0 : container.querySelector("#continue");
-    startBtn === null || startBtn === void 0 ? void 0 : startBtn.addEventListener("click", () => {
-        UIFactory.createUI(UIType.PopUp).showUI("open");
-    });
-    closeBtn === null || closeBtn === void 0 ? void 0 : closeBtn.addEventListener("click", () => {
-        UIFactory.createUI(UIType.PopUp).showUI("close");
-    });
-    proceed === null || proceed === void 0 ? void 0 : proceed.addEventListener("click", () => {
-        gameArea("gameArea");
+    const screenUI = UIFactory.createUI(UIType.showScreen);
+    screenUI.showUI("startArea");
+    const main = document.getElementById("main");
+    main.addEventListener("click", (event) => {
+        const target = event.target;
+        switch (target.id) {
+            case "startBtn":
+                UIFactory.createUI(UIType.PopUp).showUI("open");
+                break;
+            case "close":
+                UIFactory.createUI(UIType.PopUp).showUI("close");
+                break;
+            case "continue":
+                screenUI.showUI("gameArea");
+                break;
+            case "back":
+                console.log("working");
+                screenUI.showUI("startArea");
+                break;
+        }
     });
 };
 export {};

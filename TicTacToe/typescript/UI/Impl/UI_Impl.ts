@@ -49,25 +49,28 @@ class UIFactory{
         
 
 window.onload = () => {
-    const ui = UIFactory.createUI(UIType.showScreen) as screen;
-    const container = ui.showUI("startArea");
-    const gameArea = ui.showUI;
+    const screenUI = UIFactory.createUI(UIType.showScreen) as screen;
+    screenUI.showUI("startArea");
 
-    const startBtn = container?.querySelector("#startBtn") as HTMLButtonElement;
-    const closeBtn = container?.querySelector("#close") as HTMLButtonElement;
+    const main = document.getElementById("main") as HTMLDivElement;
 
-    const proceed = container?.querySelector("#continue") as HTMLButtonElement;
+    main.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement;
 
-    
-    startBtn?.addEventListener("click", (): void => {
-        UIFactory.createUI(UIType.PopUp).showUI("open")
-    })
-
-    closeBtn?.addEventListener("click", (): void => {
-        UIFactory.createUI(UIType.PopUp).showUI("close")
-    })
-
-    proceed?.addEventListener("click", () =>{
-        gameArea("gameArea");
-    })
-}
+        switch(target.id){
+            case  "startBtn":
+                UIFactory.createUI(UIType.PopUp).showUI("open")
+                break;
+            case "close":
+                UIFactory.createUI(UIType.PopUp).showUI("close");
+                break;
+            case "continue":
+                screenUI.showUI("gameArea");
+                break;
+            case "back":
+                console.log("working")
+                screenUI.showUI("startArea");
+                break;
+        }
+    });
+};
