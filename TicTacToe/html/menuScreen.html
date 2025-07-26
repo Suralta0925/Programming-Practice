@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div id="main"></div>
+
+    <template id="startArea">
+        <div id="title"><h1>TicTacToe</h1></div>
+        <button id="startBtn"></button>
+        <div id="popup" class="popup hidden">
+            <div class="popup-content">
+                <button id="close">x</button>
+                <label for="difficulty">Difficulty:</label>
+                <select name="difficulty" id="difficulty">
+                    <option value="Easy">Easy</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Impossible">Impossible</option>
+                </select>
+            </div>
+        </div>
+    </template>
+
+    <template id="gameArea">
+    <h1>Game Area</h1>
+    </template>
+    
+    <script type="module" src="../javascript/UI/Impl/UI_Impl.js"></script>
+</body>
+</html>

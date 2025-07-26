@@ -17,6 +17,10 @@ body{
     font-size: 3rem;
     margin-bottom: 10rem;
 }
+#main{
+    height: 100vh;
+}
+
 h1{
     background-color: hsla(0, 0%, 100%, 0.1);
     backdrop-filter: blur(5px);
