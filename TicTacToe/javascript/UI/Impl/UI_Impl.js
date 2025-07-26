@@ -48,7 +48,7 @@ class UIFactory {
 }
 window.onload = () => {
     const screenUI = UIFactory.createUI(UIType.showScreen);
-    screenUI.showUI("gameArea");
+    screenUI.showUI("startArea");
     const main = document.getElementById("main");
     main.addEventListener("click", (event) => {
         const target = event.target;
