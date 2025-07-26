@@ -51,11 +51,14 @@ class UIFactory{
 window.onload = () => {
     const ui = UIFactory.createUI(UIType.showScreen) as screen;
     const container = ui.showUI("startArea");
+    const gameArea = ui.showUI;
 
     const startBtn = container?.querySelector("#startBtn") as HTMLButtonElement;
     const closeBtn = container?.querySelector("#close") as HTMLButtonElement;
+
+    const proceed = container?.querySelector("#continue") as HTMLButtonElement;
+
     
-    console.log(startBtn);
     startBtn?.addEventListener("click", (): void => {
         UIFactory.createUI(UIType.PopUp).showUI("open")
     })
@@ -63,6 +66,8 @@ window.onload = () => {
     closeBtn?.addEventListener("click", (): void => {
         UIFactory.createUI(UIType.PopUp).showUI("close")
     })
-}
 
-    
+    proceed?.addEventListener("click", () =>{
+        gameArea("gameArea");
+    })
+}

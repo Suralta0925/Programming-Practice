@@ -12,7 +12,7 @@
     <template id="startArea">
         <div id="title"><h1>TicTacToe</h1></div>
         <button id="startBtn"></button>
-        <div id="popup" class="popup hidden">
+        <div id="popup" class="popup">
             <div class="popup-content">
                 <button id="close">x</button>
                 <label for="difficulty">Difficulty:</label>
@@ -21,12 +21,16 @@
                     <option value="Normal">Normal</option>
                     <option value="Impossible">Impossible</option>
                 </select>
+
+                <button id="continue">Continue</button>
+
             </div>
         </div>
     </template>
 
     <template id="gameArea">
     <h1>Game Area</h1>
+    <button>Back</button>
     </template>
     
     <script type="module" src="../javascript/UI/Impl/UI_Impl.js"></script>

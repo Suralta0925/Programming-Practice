@@ -42,14 +42,18 @@ class UIFactory {
 window.onload = () => {
     const ui = UIFactory.createUI(UIType.showScreen);
     const container = ui.showUI("startArea");
+    const gameArea = ui.showUI;
     const startBtn = container === null || container === void 0 ? void 0 : container.querySelector("#startBtn");
     const closeBtn = container === null || container === void 0 ? void 0 : container.querySelector("#close");
-    console.log(startBtn);
+    const proceed = container === null || container === void 0 ? void 0 : container.querySelector("#continue");
     startBtn === null || startBtn === void 0 ? void 0 : startBtn.addEventListener("click", () => {
         UIFactory.createUI(UIType.PopUp).showUI("open");
     });
     closeBtn === null || closeBtn === void 0 ? void 0 : closeBtn.addEventListener("click", () => {
         UIFactory.createUI(UIType.PopUp).showUI("close");
+    });
+    proceed === null || proceed === void 0 ? void 0 : proceed.addEventListener("click", () => {
+        gameArea("gameArea");
     });
 };
 export {};
