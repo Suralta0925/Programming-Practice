@@ -1,4 +1,5 @@
 import { UI } from '../interface/UI';
+// import { runPlayer } from '../../players/player';
 
 class popUp implements UI{
     showUI(state: string, button : string): void{
@@ -53,11 +54,12 @@ class UIFactory{
     }
 }
 
-        
 
-window.onload = () => {
+
     const screenUI = UIFactory.createUI(UIType.showScreen) as screen;
-    screenUI.showUI("startArea");
+    screenUI.showUI("gameArea");
+
+    
 
     const main = document.getElementById("main") as HTMLDivElement;
     main.addEventListener("click", (event) => {
@@ -83,6 +85,5 @@ window.onload = () => {
                 break;
         }
         
-        
-    });
-};
+    
+});

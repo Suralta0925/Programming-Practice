@@ -1,3 +1,4 @@
+// import { runPlayer } from '../../players/player';
 class popUp {
     showUI(state, button) {
         const popup = document.getElementById("popup");
@@ -46,32 +47,30 @@ class UIFactory {
         }
     }
 }
-window.onload = () => {
-    const screenUI = UIFactory.createUI(UIType.showScreen);
-    screenUI.showUI("startArea");
-    const main = document.getElementById("main");
-    main.addEventListener("click", (event) => {
-        const target = event.target;
-        switch (target.id) {
-            case "startBtn":
-                UIFactory.createUI(UIType.PopUp).showUI("open", "popup");
-                break;
-            case "close":
-                UIFactory.createUI(UIType.PopUp).showUI("close", "popup");
-                break;
-            case "continue":
-                screenUI.showUI("gameArea");
-                break;
-            case "back":
-                UIFactory.createUI(UIType.PopUp).showUI("open", "gamePaused");
-                break;
-            case "unpause":
-                UIFactory.createUI(UIType.PopUp).showUI("close", "gamePaused");
-                break;
-            case "Home":
-                screenUI.showUI("startArea");
-                break;
-        }
-    });
-};
+const screenUI = UIFactory.createUI(UIType.showScreen);
+screenUI.showUI("gameArea");
+const main = document.getElementById("main");
+main.addEventListener("click", (event) => {
+    const target = event.target;
+    switch (target.id) {
+        case "startBtn":
+            UIFactory.createUI(UIType.PopUp).showUI("open", "popup");
+            break;
+        case "close":
+            UIFactory.createUI(UIType.PopUp).showUI("close", "popup");
+            break;
+        case "continue":
+            screenUI.showUI("gameArea");
+            break;
+        case "back":
+            UIFactory.createUI(UIType.PopUp).showUI("open", "gamePaused");
+            break;
+        case "unpause":
+            UIFactory.createUI(UIType.PopUp).showUI("close", "gamePaused");
+            break;
+        case "Home":
+            screenUI.showUI("startArea");
+            break;
+    }
+});
 export {};
