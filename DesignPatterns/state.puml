@@ -1,0 +1,18 @@
+@startuml
+title State Pattern
+
+interface Shape{
+    -size: Size
+}
+
+Shape  *--> Size
+
+class Size{
+     -height : number
+     -width : number
+     +setSize(width,height)
+     +getSize()
+}
+
+
+@enduml

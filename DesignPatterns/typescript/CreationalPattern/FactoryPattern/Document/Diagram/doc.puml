@@ -1,0 +1,37 @@
+@startuml
+
+Title Document
+
+interface Document{
+    +addText(text : string) : void;
+    +save(path : string) : void
+}
+
+txtDocument --> Document
+pdfDocument --> Document
+mobiDocument --> Document
+
+class txtDocument{
+    +addText(text: string) : void;
+    +save(path : string) : void;
+}
+
+class pdfDocument{
+    +addText(text: string) : void;
+    +save(path : string) : void;
+}
+
+class mobiDocument{
+    +addText(text: string) : void;
+    +save(path : string) : void;
+}
+
+class documentFactory{
+    +createDocument(doc : Document) : Document;
+}
+
+documentFactory .> Document 
+
+
+
+@enduml
