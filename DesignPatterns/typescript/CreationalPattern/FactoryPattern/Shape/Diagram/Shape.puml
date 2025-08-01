@@ -1,0 +1,28 @@
+@startuml
+
+interface Shape{
+    +draw() : string;
+}
+
+circle --> Shape
+triangle --> Shape
+square --> Shape
+shapeFactory .> Shape
+
+class circle{
+    +draw() : string;
+}
+
+class triangle{
+    +draw() : string;
+}
+
+class square{
+    +draw() : string;
+}
+
+abstract shapeFactory{
+    +createShape(shape:Shape) : Shape;
+}
+
+@enduml

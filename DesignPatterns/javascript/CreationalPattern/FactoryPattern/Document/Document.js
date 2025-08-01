@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.txtDocument = void 0;
+exports.MobiDocument = exports.pdfDoc = exports.txtDocument = void 0;
 class txtDocument {
     addText(text) {
         console.log(`added the text ${text} in the document`);
@@ -18,6 +18,7 @@ class pdfDoc {
         console.log(`PDF is saved at ${path}`);
     }
 }
+exports.pdfDoc = pdfDoc;
 class MobiDocument {
     addText(text) {
         console.log(`added the text ${text} in MobiDocumen`);
@@ -26,3 +27,4 @@ class MobiDocument {
         console.log(`PDF is saved at ${path}`);
     }
 }
+exports.MobiDocument = MobiDocument;

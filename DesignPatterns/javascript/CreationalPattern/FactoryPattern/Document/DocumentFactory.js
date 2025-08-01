@@ -8,5 +8,5 @@ class DocumentFactory {
 }
 const docFactory = new DocumentFactory();
 let doc = docFactory.createDocument(new Document_1.txtDocument());
-doc.addText("Hello WOrld");
+doc.addText("Hello World");
 doc.save("C:/usr/vince/Downloads/");

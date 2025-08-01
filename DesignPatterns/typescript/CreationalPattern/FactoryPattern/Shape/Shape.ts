@@ -1,25 +1,22 @@
-class Size{
-    height: number;
-    width: number;
 
-    constructor(width: number,height: number){
-        this.width = width;
-        this.height = height;
-    }
-
-    setSize(width: number, height : number){
-        this.height = height;
-        this.width = width;
-    }
-
-    getSize(){
-        return [this.width, this.height];
-    }
-
+export interface Shape{
+    draw() : void;
 }
 
-interface Shape{
-    size : Size;
-    
+export class circle implements Shape{
+    draw(){
+        console.log("Drawing Circle: O");
+    }
 }
 
+export class triangle implements Shape{
+    draw(){
+        console.log("Drawing triangle: △")
+    }
+}
+
+export class square implements Shape{
+    draw(){
+        console.log("Drawing square: □")
+    }
+}
