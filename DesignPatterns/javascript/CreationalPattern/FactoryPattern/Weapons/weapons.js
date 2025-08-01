@@ -16,9 +16,18 @@ class Bow {
 }
 class weaponFactory {
     createWeapon(Weapon) {
-        return Weapon;
+        switch (Weapon.toLowerCase()) {
+            case "sword":
+                return new Sword();
+            case "bow":
+                return new Bow();
+            case "gun":
+                return new Gun();
+            default:
+                throw new Error("Invalid Weapon Type");
+        }
     }
 }
 const weaponMaker = new weaponFactory();
-const sword = weaponMaker.createWeapon(new Sword());
+const sword = weaponMaker.createWeapon("gun");
 console.log(sword.use());
