@@ -2,10 +2,11 @@ interface enemy{
     attackType: string;
     defense : number;
     baseHp : number;
-    maxHp(): number;
+    getCurrentHp(): number;
     power : number;
     attack():number;
     damageTaken(damage : number) : void;
+    getEnemyType() : string;
 }
 
 class zombie implements enemy{
@@ -13,7 +14,7 @@ class zombie implements enemy{
     defense: number = 50;
     baseHp : number = 100;
 
-    maxHp(): number{
+    getCurrentHp(): number{
         return (this.defense/100) * this.baseHp;
     } 
 
@@ -26,6 +27,10 @@ class zombie implements enemy{
     damageTaken(damage: number): void {
         this.baseHp -= damage;
     }
+
+    getEnemyType(): string {
+        return "Zombie"
+    }
 }
 
 class vampire implements enemy{
@@ -34,7 +39,7 @@ class vampire implements enemy{
     baseHp: number = 100;
     power: number = 75;
 
-    maxHp(): number{
+    getCurrentHp(): number{
         return (this.defense/100) * this.baseHp;
     } 
 
@@ -44,6 +49,9 @@ class vampire implements enemy{
 
     damageTaken(damage: number): void {
         this.baseHp -= damage;
+    }
+    getEnemyType(): string {
+        return "Vampire"
     }
 }
 
@@ -53,7 +61,7 @@ class robot implements enemy{
     baseHp: number = 100;
     power: number = 100;
 
-    maxHp(): number{
+    getCurrentHp(): number{
         return (this.defense/100) * this.baseHp;
     } 
 
@@ -63,6 +71,10 @@ class robot implements enemy{
 
     damageTaken(damage: number): void {
         this.baseHp -= damage;
+    }
+
+    getEnemyType(): string {
+        return "Robot"
     }
 }
 
@@ -82,42 +94,48 @@ class enemyFactory{
         }
     }
 }
+class initiateBattle{
+    startBattle(enemy1 : enemy, enemy2: enemy) : void{
+        let isEnemy1Turn : boolean = true;
 
-const factory : enemyFactory = new enemyFactory();
-const Robot : enemy = factory.createEnemy("robot");
-const Zombie : enemy = factory.createEnemy("zombie");
+    const battleInterval = setInterval(() =>{
+    console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
+    console.log(`${enemy2} Hp: ${enemy2.getCurrentHp()}\n`)
+    if (isEnemy1Turn){
 
-
-let isRobotTurn : boolean = true;
-
-const battleInterval = setInterval(() =>{
-    console.log(`Robot Hp: ${Robot.maxHp()}`);
-    console.log(`Zombie Hp: ${Zombie.maxHp()}\n`)
-    if (isRobotTurn){
-
-        Zombie.damageTaken(Robot.attack());
-        console.log(`Robot used ${Robot.attackType}, Zombie lose ${Robot.power} HP\n\n`);
-        if (Robot.maxHp() <= 0){
-            console.log(`Robot Hp: ${Robot.maxHp()}`);
-            console.log(`Zombie Hp: ${Zombie.maxHp()}\n`)
-            console.log("Zombie Wins");
+        enemy1.damageTaken(enemy1.attack());
+        console.log(`${enemy1} used ${enemy1.attackType}, ${enemy2} lose ${enemy1.power} HP\n\n`);
+        if (enemy1.getCurrentHp() <= 0){
+            console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
+            console.log(`${enemy2} Hp: ${enemy2.getCurrentHp()}\n`)
+            console.log(`${enemy2} Wins`);
             
             clearInterval(battleInterval);
             return;
         }
     }
     else{
-        Robot.damageTaken(Zombie.attack());
-        console.log(`Zombie used ${Zombie.attackType}, Robot lose ${Zombie.power} HP\n\n`);
+        enemy1.damageTaken(enemy2.attack());
+        console.log(`${enemy2} used ${enemy2.attackType}, ${enemy1} lose ${enemy2.power} HP\n\n`);
 
-        if (Zombie.maxHp() <= 0){
-            console.log(`Robot Hp: ${Robot.maxHp()}`);
-            console.log(`Zombie Hp: ${Zombie.maxHp()}\n`)
-            console.log("Robot Wins");
+        if (enemy2.getCurrentHp() <= 0){
+            console.log(`${enemy1} Hp: ${enemy1.getCurrentHp()}`);
+            console.log(`${enemy2} Hp: ${enemy2.getCurrentHp()}\n`)
+            console.log(`${enemy1} Wins`);
             clearInterval(battleInterval);
             return;
         }
     }
 
-    isRobotTurn = !isRobotTurn;
-},2000)
+    isEnemy1Turn = !isEnemy1Turn;
+    },2000)
+    }
+}
+
+const battle = new initiateBattle();
+const factory : enemyFactory = new enemyFactory();
+const Robot : enemy = factory.createEnemy("robot");
+const Zombie : enemy = factory.createEnemy("zombie");
+const Vampire : enemy = factory.createEnemy("vampire");
+
+battle.startBattle(Vampire,Zombie);
