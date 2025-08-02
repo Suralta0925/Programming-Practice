@@ -1,0 +1,62 @@
+@startuml
+
+interface enemy{
+    attackType : string;
+    baseHp : number;
+    defense : number;
+    maxHp : number;
+    power : number;
+    getCurrentHp() : number;
+    attack() : number;
+    damageTaken(damage : number) : void;
+    enemyType(): string;
+}
+
+    zombie ---|> enemy
+    vampire ---|> enemy
+    robot ---|> enemy
+    
+
+class zombie{
+    attackType : string;
+    baseHp : number;
+    defense : number;
+    maxHp : number;
+    power : number;
+    getCurrentHp() : number;
+    attack() : number;
+    damageTaken(damage : number) : void;
+    enemyType(): string;
+}
+
+class vampire{
+    attackType : string;
+    baseHp : number;
+    defense : number;
+    maxHp : number;
+    power : number;
+    getCurrentHp() : number;
+    attack() : number;
+    damageTaken(damage : number) : void;
+    enemyType(): string;
+}
+
+class robot{
+    attackType : string;
+    baseHp : number;
+    defense : number;
+    maxHp : number;
+    power : number;
+    getCurrentHp() : number;
+    attack() : number;
+    damageTaken(damage : number) : void;
+    enemyType(): string;
+}
+
+enemy ...> enemyFactory
+
+class enemyFactory{
+    createEnemy(enemyType : string) : enemy : <<return>>
+}
+
+@enduml
