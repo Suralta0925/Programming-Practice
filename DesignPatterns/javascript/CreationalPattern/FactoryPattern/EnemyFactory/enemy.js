@@ -6,14 +6,17 @@ class zombie {
         this.baseHp = 100;
         this.power = 5;
     }
-    maxHp() {
-        return (this.defense / 100) * this.baseHp;
+    getCurrentHp() {
+        return (this.baseHp < 0) ? 0 : (this.defense / 100) * this.baseHp;
     }
     attack() {
         return this.power;
     }
     damageTaken(damage) {
         this.baseHp -= damage;
+    }
+    getEnemyType() {
+        return "Zombie";
     }
 }
 class vampire {
@@ -23,14 +26,17 @@ class vampire {
         this.baseHp = 100;
         this.power = 75;
     }
-    maxHp() {
-        return (this.defense / 100) * this.baseHp;
+    getCurrentHp() {
+        return (this.baseHp < 0) ? 0 : (this.defense / 100) * this.baseHp;
     }
     attack() {
         return this.power;
     }
     damageTaken(damage) {
         this.baseHp -= damage;
+    }
+    getEnemyType() {
+        return "Vampire";
     }
 }
 class robot {
@@ -40,14 +46,17 @@ class robot {
         this.baseHp = 100;
         this.power = 100;
     }
-    maxHp() {
-        return (this.defense / 100) * this.baseHp;
+    getCurrentHp() {
+        return (this.baseHp < 0) ? 0 : (this.defense / 100) * this.baseHp;
     }
     attack() {
         return this.power;
     }
     damageTaken(damage) {
         this.baseHp -= damage;
+    }
+    getEnemyType() {
+        return "Robot";
     }
 }
 class enemyFactory {
@@ -64,34 +73,41 @@ class enemyFactory {
         }
     }
 }
+class initiateBattle {
+    startBattle(enemy1, enemy2) {
+        let isEnemy1Turn = true;
+        const battleInterval = setInterval(() => {
+            console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
+            console.log(`${enemy2.getEnemyType()} Hp: ${enemy2.getCurrentHp()}\n`);
+            if (isEnemy1Turn) {
+                enemy2.damageTaken(enemy1.attack());
+                console.log(`${enemy1.getEnemyType()} used ${enemy1.attackType}, ${enemy2.getEnemyType()} lose ${enemy1.power} HP\n\n`);
+                if (enemy1.getCurrentHp() <= 0) {
+                    console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
+                    console.log(`${enemy2.getEnemyType()} Hp: ${enemy2.getCurrentHp()}\n`);
+                    console.log(`${enemy2.getEnemyType()} Wins`);
+                    clearInterval(battleInterval);
+                    return;
+                }
+            }
+            else {
+                enemy1.damageTaken(enemy2.attack());
+                console.log(`${enemy2.getEnemyType()} used ${enemy2.attackType}, ${enemy1.getEnemyType()} lose ${enemy2.power} HP\n\n`);
+                if (enemy2.getCurrentHp() <= 0) {
+                    console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
+                    console.log(`${enemy2.getEnemyType()} Hp: ${enemy2.getCurrentHp()}\n`);
+                    console.log(`${enemy1.getEnemyType()} Wins`);
+                    clearInterval(battleInterval);
+                    return;
+                }
+            }
+            isEnemy1Turn = !isEnemy1Turn;
+        }, 2000);
+    }
+}
+const battle = new initiateBattle();
 const factory = new enemyFactory();
 const Robot = factory.createEnemy("robot");
 const Zombie = factory.createEnemy("zombie");
-let isRobotTurn = true;
-const battleInterval = setInterval(() => {
-    console.log(`Robot Hp: ${Robot.maxHp()}`);
-    console.log(`Zombie Hp: ${Zombie.maxHp()}\n`);
-    if (isRobotTurn) {
-        Zombie.damageTaken(Robot.attack());
-        console.log(`Robot used ${Robot.attackType}, Zombie lose ${Robot.power} HP\n\n`);
-        if (Robot.maxHp() <= 0) {
-            console.log(`Robot Hp: ${Robot.maxHp()}`);
-            console.log(`Zombie Hp: ${Zombie.maxHp()}\n`);
-            console.log("Zombie Wins");
-            clearInterval(battleInterval);
-            return;
-        }
-    }
-    else {
-        Robot.damageTaken(Zombie.attack());
-        console.log(`Zombie used ${Zombie.attackType}, Robot lose ${Zombie.power} HP\n\n`);
-        if (Zombie.maxHp() <= 0) {
-            console.log(`Robot Hp: ${Robot.maxHp()}`);
-            console.log(`Zombie Hp: ${Zombie.maxHp()}\n`);
-            console.log("Robot Wins");
-            clearInterval(battleInterval);
-            return;
-        }
-    }
-    isRobotTurn = !isRobotTurn;
-}, 2000);
+const Vampire = factory.createEnemy("vampire");
+battle.startBattle(Vampire, Robot);

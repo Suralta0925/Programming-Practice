@@ -15,7 +15,7 @@ class zombie implements enemy{
     baseHp : number = 100;
 
     getCurrentHp(): number{
-        return (this.defense/100) * this.baseHp;
+        return (this.baseHp < 0) ? 0:(this.defense/100) * this.baseHp;
     } 
 
     power : number = 5;
@@ -40,7 +40,7 @@ class vampire implements enemy{
     power: number = 75;
 
     getCurrentHp(): number{
-        return (this.defense/100) * this.baseHp;
+        return (this.baseHp < 0) ? 0:(this.defense/100) * this.baseHp;
     } 
 
     attack(): number {
@@ -62,7 +62,7 @@ class robot implements enemy{
     power: number = 100;
 
     getCurrentHp(): number{
-        return (this.defense/100) * this.baseHp;
+        return (this.baseHp < 0) ? 0:(this.defense/100) * this.baseHp;
     } 
 
     attack(): number {
@@ -100,15 +100,15 @@ class initiateBattle{
 
     const battleInterval = setInterval(() =>{
     console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
-    console.log(`${enemy2} Hp: ${enemy2.getCurrentHp()}\n`)
+    console.log(`${enemy2.getEnemyType()} Hp: ${enemy2.getCurrentHp()}\n`)
     if (isEnemy1Turn){
 
-        enemy1.damageTaken(enemy1.attack());
-        console.log(`${enemy1} used ${enemy1.attackType}, ${enemy2} lose ${enemy1.power} HP\n\n`);
+        enemy2.damageTaken(enemy1.attack());
+        console.log(`${enemy1.getEnemyType()} used ${enemy1.attackType}, ${enemy2.getEnemyType()} lose ${enemy1.power} HP\n\n`);
         if (enemy1.getCurrentHp() <= 0){
             console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
-            console.log(`${enemy2} Hp: ${enemy2.getCurrentHp()}\n`)
-            console.log(`${enemy2} Wins`);
+            console.log(`${enemy2.getEnemyType()} Hp: ${enemy2.getCurrentHp()}\n`)
+            console.log(`${enemy2.getEnemyType()} Wins`);
             
             clearInterval(battleInterval);
             return;
@@ -116,12 +116,12 @@ class initiateBattle{
     }
     else{
         enemy1.damageTaken(enemy2.attack());
-        console.log(`${enemy2} used ${enemy2.attackType}, ${enemy1} lose ${enemy2.power} HP\n\n`);
+        console.log(`${enemy2.getEnemyType()} used ${enemy2.attackType}, ${enemy1.getEnemyType()} lose ${enemy2.power} HP\n\n`);
 
         if (enemy2.getCurrentHp() <= 0){
-            console.log(`${enemy1} Hp: ${enemy1.getCurrentHp()}`);
-            console.log(`${enemy2} Hp: ${enemy2.getCurrentHp()}\n`)
-            console.log(`${enemy1} Wins`);
+            console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
+            console.log(`${enemy2.getEnemyType()} Hp: ${enemy2.getCurrentHp()}\n`)
+            console.log(`${enemy1.getEnemyType()} Wins`);
             clearInterval(battleInterval);
             return;
         }
@@ -138,4 +138,4 @@ const Robot : enemy = factory.createEnemy("robot");
 const Zombie : enemy = factory.createEnemy("zombie");
 const Vampire : enemy = factory.createEnemy("vampire");
 
-battle.startBattle(Vampire,Zombie);
+battle.startBattle(Vampire,Robot);
