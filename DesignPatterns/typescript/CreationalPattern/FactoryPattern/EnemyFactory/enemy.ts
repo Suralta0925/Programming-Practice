@@ -2,8 +2,9 @@ interface enemy{
     attackType: string;
     defense : number;
     baseHp : number;
-    getCurrentHp(): number;
     power : number;
+    maxHp: number;
+    getCurrentHp(): number;
     attack():number;
     damageTaken(damage : number) : void;
     getEnemyType() : string;
@@ -11,11 +12,11 @@ interface enemy{
 
 class zombie implements enemy{
     attackType: string = "Scratch";
-    defense: number = 50;
+    defense: number = 1000;
     baseHp : number = 100;
-
+    maxHp: number = (this.defense/100) * this.baseHp;
     getCurrentHp(): number{
-        return (this.baseHp < 0) ? 0:(this.defense/100) * this.baseHp;
+        return (this.maxHp < 0) ? 0:this.maxHp;
     } 
 
     power : number = 5;
@@ -25,7 +26,7 @@ class zombie implements enemy{
     }
 
     damageTaken(damage: number): void {
-        this.baseHp -= damage;
+        this.maxHp -= damage;
     }
 
     getEnemyType(): string {
@@ -37,10 +38,11 @@ class vampire implements enemy{
     attackType: string = "Blood Spike";
     defense: number = 40;
     baseHp: number = 100;
+    maxHp: number= (this.defense/100) * this.baseHp;
     power: number = 75;
 
     getCurrentHp(): number{
-        return (this.baseHp < 0) ? 0:(this.defense/100) * this.baseHp;
+        return (this.maxHp < 0) ? 0:this.maxHp;
     } 
 
     attack(): number {
@@ -48,7 +50,7 @@ class vampire implements enemy{
     }
 
     damageTaken(damage: number): void {
-        this.baseHp -= damage;
+        this.maxHp -= damage;
     }
     getEnemyType(): string {
         return "Vampire"
@@ -59,10 +61,11 @@ class robot implements enemy{
     attackType: string = "Laser Beam";
     defense: number = 100;
     baseHp: number = 100;
+    maxHp: number = (this.defense/100) * this.baseHp;
     power: number = 100;
 
     getCurrentHp(): number{
-        return (this.baseHp < 0) ? 0:(this.defense/100) * this.baseHp;
+        return (this.maxHp < 0) ? 0:this.maxHp;
     } 
 
     attack(): number {
@@ -70,7 +73,7 @@ class robot implements enemy{
     }
 
     damageTaken(damage: number): void {
-        this.baseHp -= damage;
+        this.maxHp -= damage;
     }
 
     getEnemyType(): string {
@@ -109,7 +112,13 @@ class initiateBattle{
             console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
             console.log(`${enemy2.getEnemyType()} Hp: ${enemy2.getCurrentHp()}\n`)
             console.log(`${enemy2.getEnemyType()} Wins`);
-            
+            clearInterval(battleInterval);
+            return;
+        }
+        else if(enemy2.getCurrentHp() <= 0){
+            console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
+            console.log(`${enemy2.getEnemyType()} Hp: ${enemy2.getCurrentHp()}\n`)
+            console.log(`${enemy1.getEnemyType()} Wins`);
             clearInterval(battleInterval);
             return;
         }
@@ -122,6 +131,13 @@ class initiateBattle{
             console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
             console.log(`${enemy2.getEnemyType()} Hp: ${enemy2.getCurrentHp()}\n`)
             console.log(`${enemy1.getEnemyType()} Wins`);
+            clearInterval(battleInterval);
+            return;
+        }
+        else if(enemy1.getCurrentHp() <= 0){
+            console.log(`${enemy1.getEnemyType()} Hp: ${enemy1.getCurrentHp()}`);
+            console.log(`${enemy2.getEnemyType()} Hp: ${enemy2.getCurrentHp()}\n`)
+            console.log(`${enemy2.getEnemyType()} Wins`);
             clearInterval(battleInterval);
             return;
         }
