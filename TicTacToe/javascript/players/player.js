@@ -1,4 +1,30 @@
 "use strict";
+// import { PlayerState, player} from "./playerState.js";
+// export class Player{
+//     playerState: PlayerState;
+//     constructor(playerState: PlayerState){
+//         this.playerState = playerState;
+//     }
+//     setState(playerState: PlayerState){
+//         this.playerState = playerState;
+//     }
+//     getState(){
+//         return this.playerState;
+//     }
+//     run(){
+//         this.playerState.move();
+//         this.playerState.nextTurn(this);
+//     }
+// }
+// const btn = document.querySelectorAll<HTMLButtonElement>(".play");
+// const currentPlayer = new Player(new player());
+// btn.forEach((button) => {
+//     button.addEventListener("click", () => {
+//     currentPlayer.getState().nextTurn(currentPlayer);
+//     setTimeout(() => currentPlayer.run(), 1000);
+//     });
+// });
+// currentPlayer.run();
 class GameState {
     constructor() {
         this.currentPlayer = 'X';
