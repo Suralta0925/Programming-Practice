@@ -3,19 +3,20 @@ class Singleton {
     constructor(data) {
         this.data = data;
     }
+    getData() {
+        return (!Singleton.instance) ? this.data : "";
+    }
     static getInstance(data) {
-        let result = this.instance;
-        console.log(result);
-        if (result == null || result == undefined) {
-            result = new Singleton(data);
+        if (!this.instance) {
+            this.instance = new Singleton(data);
         }
         else {
             console.error(`${this.name} is already initialized`);
         }
-        return result;
+        return this.instance;
     }
 }
 const singleton = Singleton.getInstance("Singleton Initialized");
-console.log(singleton);
+console.log(singleton.getData());
 const single = Singleton.getInstance("I error");
-console.log(single);
+console.log(single.getData());

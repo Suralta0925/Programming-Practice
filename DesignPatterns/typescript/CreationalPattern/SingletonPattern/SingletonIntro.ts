@@ -9,20 +9,22 @@ class Singleton{
     }
 
     public static getInstance(data : string) : Singleton{ 
-        let result : Singleton = this.instance;
-        console.log(result);
-        if (result == null || result == undefined){
-            result = new Singleton(data);
+
+        if (!this.instance){
+            this.instance = new Singleton(data);
         }
         else{
             console.error(`${this.name} is already initialized`);
         }
-        return result;
+        return this.instance;
+    }
+    public getData() : string{
+        return this.data; 
     }
 
 }
 
 const singleton : Singleton = Singleton.getInstance("Singleton Initialized");
-console.log(singleton);
+console.log(singleton.getData());
 const single : Singleton = Singleton.getInstance("I error")
-console.log(single);
+console.log(single.getData());
