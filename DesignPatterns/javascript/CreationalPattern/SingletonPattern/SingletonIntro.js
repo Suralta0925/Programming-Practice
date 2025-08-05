@@ -3,9 +3,6 @@ class Singleton {
     constructor(data) {
         this.data = data;
     }
-    getData() {
-        return (!Singleton.instance) ? this.data : "";
-    }
     static getInstance(data) {
         if (!this.instance) {
             this.instance = new Singleton(data);
@@ -14,6 +11,9 @@ class Singleton {
             console.error(`${this.name} is already initialized`);
         }
         return this.instance;
+    }
+    getData() {
+        return this.data;
     }
 }
 const singleton = Singleton.getInstance("Singleton Initialized");
