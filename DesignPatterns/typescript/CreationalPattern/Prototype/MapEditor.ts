@@ -1,9 +1,4 @@
-interface prototype{
-    copy() : prototype;
-}
-
-
-class grass implements prototype{
+abstract class tile{
     private color : string;
     private height : number;
     private type : string;
@@ -13,17 +8,32 @@ class grass implements prototype{
         this.height = height;
         this.type = type;
     }
-
-    copy(){
-        return new grass(this.color,this.height,this.type);
-    }
-
+    
+    abstract copy() : tile;
     toString(): string{
         return `color: ${this.color}\nheight: ${this.height}\ntype: ${this.type}`;
     }
 }
 
+
+class grass extends tile{
+
+    constructor(color:string, height : number, type : string){
+        super(color,height,type);
+    }
+
+    copy(){
+        return  this;
+    }
+}
+
+
+
 const springGrass : grass = new grass("green",10,"spring");
-console.log(springGrass.toString());
 const cloneGrass : grass = springGrass.copy();
-console.log(cloneGrass.toString());
+
+const diffGrass : Array<tile> = [springGrass,cloneGrass];
+
+for (let diff of diffGrass){
+    console.log(diff.toString());
+}
