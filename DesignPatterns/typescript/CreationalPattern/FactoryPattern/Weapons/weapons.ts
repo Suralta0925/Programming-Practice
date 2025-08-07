@@ -1,20 +1,23 @@
-interface weapon{
-    use(): string;
+abstract class weapon{
+    abstract use(): string;
+    clone() : weapon{
+        return this;
+    };
 }
 
-class Sword implements weapon{
+class Sword extends weapon{
     use(){
         return "Woosh! Swinging Sword";
     }
 }
 
-class Gun implements weapon{
+class Gun extends weapon{
     use(){
         return "Bangg! Wielding Gun";
     }
 }
 
-class Bow implements weapon{
+class Bow extends weapon{
     use(){
         return "Twangg! Shoots an Arrow"
     }
@@ -37,5 +40,7 @@ class weaponFactory{
 }
 
 const weaponMaker : weaponFactory = new weaponFactory();
-const sword : weapon = weaponMaker.createWeapon("gun");
-console.log(sword.use());
+const gun : weapon = weaponMaker.createWeapon("gun");
+const gun2 : weapon = gun.clone();
+console.log(gun.use());
+console.log(gun2.use());

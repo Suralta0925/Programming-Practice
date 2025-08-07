@@ -13,6 +13,18 @@ abstract class tile{
     toString(): string{
         return `color: ${this.color}\nheight: ${this.height}\ntype: ${this.type}`;
     }
+
+    getColor(){
+        return this.color;
+    }
+
+    getHeight(){
+        return this.height;
+    }
+
+    getType(){
+        return this.type;
+    }
 }
 
 
@@ -23,7 +35,7 @@ class grass extends tile{
     }
 
     copy(){
-        return  this;
+        return  new grass(this.getColor(),this.getHeight(),this.getType());
     }
 }
 

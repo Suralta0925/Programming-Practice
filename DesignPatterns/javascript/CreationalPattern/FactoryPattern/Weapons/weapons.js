@@ -1,15 +1,21 @@
 "use strict";
-class Sword {
+class weapon {
+    clone() {
+        return this;
+    }
+    ;
+}
+class Sword extends weapon {
     use() {
         return "Woosh! Swinging Sword";
     }
 }
-class Gun {
+class Gun extends weapon {
     use() {
         return "Bangg! Wielding Gun";
     }
 }
-class Bow {
+class Bow extends weapon {
     use() {
         return "Twangg! Shoots an Arrow";
     }
@@ -29,5 +35,7 @@ class weaponFactory {
     }
 }
 const weaponMaker = new weaponFactory();
-const sword = weaponMaker.createWeapon("gun");
-console.log(sword.use());
+const gun = weaponMaker.createWeapon("gun");
+const gun2 = gun.clone();
+console.log(gun.use());
+console.log(gun2.use());
