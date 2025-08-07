@@ -1,23 +1,26 @@
 "use strict";
-class weapon {
-    clone() {
-        return this;
-    }
-    ;
-}
-class Sword extends weapon {
+class Sword {
     use() {
         return "Woosh! Swinging Sword";
     }
+    clone() {
+        return new Sword();
+    }
 }
-class Gun extends weapon {
+class Gun {
     use() {
         return "Bangg! Wielding Gun";
     }
+    clone() {
+        return new Gun();
+    }
 }
-class Bow extends weapon {
+class Bow {
     use() {
         return "Twangg! Shoots an Arrow";
+    }
+    clone() {
+        return new Gun();
     }
 }
 class weaponFactory {

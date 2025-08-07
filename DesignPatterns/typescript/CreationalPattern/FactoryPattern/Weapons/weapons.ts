@@ -1,25 +1,33 @@
-abstract class weapon{
-    abstract use(): string;
-    clone() : weapon{
-        return this;
-    };
+interface weapon{
+    use(): string;
+    clone() : weapon;
 }
 
-class Sword extends weapon{
+class Sword implements weapon{
     use(){
         return "Woosh! Swinging Sword";
     }
-}
 
-class Gun extends weapon{
-    use(){
-        return "Bangg! Wielding Gun";
+    clone(){
+        return new Sword();
     }
 }
 
-class Bow extends weapon{
+class Gun implements weapon{
+    use(){
+        return "Bangg! Wielding Gun";
+    }
+    clone(){
+        return new Gun();
+    }
+}
+
+class Bow implements weapon{
     use(){
         return "Twangg! Shoots an Arrow"
+    }
+    clone(){
+        return new Gun();
     }
 }
 

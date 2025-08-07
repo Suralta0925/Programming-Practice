@@ -8,13 +8,22 @@ class tile {
     toString() {
         return `color: ${this.color}\nheight: ${this.height}\ntype: ${this.type}`;
     }
+    getColor() {
+        return this.color;
+    }
+    getHeight() {
+        return this.height;
+    }
+    getType() {
+        return this.type;
+    }
 }
 class grass extends tile {
     constructor(color, height, type) {
         super(color, height, type);
     }
     copy() {
-        return this;
+        return new grass(this.getColor(), this.getHeight(), this.getType());
     }
 }
 const springGrass = new grass("green", 10, "spring");
