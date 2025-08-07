@@ -27,7 +27,7 @@ class Bow implements weapon{
         return "Twangg! Shoots an Arrow"
     }
     clone(){
-        return new Gun();
+        return new Bow();
     }
 }
 
