@@ -1,4 +1,6 @@
-
+/* *{
+    border: 1px solid red;
+} */
 
 body{
     display: flex;
@@ -9,12 +11,56 @@ body{
 .card{
     display: flex;
     align-items: center;
-    height: 200px;
-    width: 90vw;
+    height: 180px;
+    width: 70vw;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.419);
+    padding: 10px;
+    background-color: rgb(9, 9, 9);
+    margin-bottom: 10px;
+    border: 5px solid rgb(212, 0, 255);
 }
 img{
-    margin-left: 30px;
-    height: 10vh;
+    height: 8vh;
 }
+
+#statusContainer{
+    position: relative;
+    top: 20px;
+    left: 20px;
+    height: fit-content;
+    width: 20%;
+    text-align: center;
+    padding-top: 10px;
+    margin-right: 20px;
+}
+
+#contentContainer{
+    height: 100%;
+    width: 100%;
+}
+
+#status{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: 18px;
+    color:lightgreen;
+}
+
+h1{
+    color: white;
+    text-align: center;
+    margin: 10px 0 40px 0;
+}
+h2{
+    color: white;
+    text-align: center;
+    margin: 10px 0 30px;
+    font-size: 30px;
+}
+
+#deadline{
+    color: orange;
+    font-weight: 900;
+    text-align: center;
+}
+

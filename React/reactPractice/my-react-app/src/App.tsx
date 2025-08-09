@@ -3,7 +3,8 @@ import Card from "./Card";
 function App() {
   return(
     <>
-      <Card/>
+      <Card status="ongoing"/>
+      <Card status="finished"/>
     </>
   );
 }
