@@ -7,12 +7,12 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
 }
 .card{
     display: flex;
     align-items: center;
-    height: 180px;
-    width: 70vw;
+    width: clamp(300px, 70vw,500px);
     border-radius: 10px;
     padding: 10px;
     background-color: rgb(9, 9, 9);
@@ -20,7 +20,8 @@ body{
     border: 5px solid rgb(212, 0, 255);
 }
 img{
-    height: 8vh;
+    position: relative;
+    height: clamp(30px, 6vw, 50px);
 }
 
 #statusContainer{
@@ -40,27 +41,28 @@ img{
 }
 
 #status{
-    font-family: 'Courier New', Courier, monospace;
     font-weight: 900;
-    font-size: 18px;
+    font-size: clamp(3px,3vw,20px);
     color:lightgreen;
 }
 
-h1{
+#subject{
+    font-size: clamp(15px, 3.5vw, 30px);
     color: white;
     text-align: center;
     margin: 10px 0 40px 0;
 }
-h2{
+#assignment{
     color: white;
     text-align: center;
-    margin: 10px 0 30px;
-    font-size: 30px;
+    margin: 10px 0 20px;
+    font-size: clamp(5px, 3vw, 20px);
 }
 
 #deadline{
     color: orange;
     font-weight: 900;
     text-align: center;
+    font-size: clamp(3px, 2vw, 15px);
 }
 
