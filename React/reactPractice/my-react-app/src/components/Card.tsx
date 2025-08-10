@@ -4,6 +4,8 @@ import notice from "../assets/statusIcon/notImportant.svg"
 import important from "../assets/statusIcon/important.svg"
 import urgent from "../assets/statusIcon/urgent.svg"
 
+import "../style/card.css"
+
 type CardProps  ={
     status: "notice" | "ongoing" | "finished" | "important" | "urgent";
 }
@@ -27,7 +29,7 @@ function Card(card : CardProps){
     return(
         <div className="card">
             <div id="statusContainer">
-                <img src={status()} id="progress" />
+                <img src={status()} id="progress" className="stat"/>
                 <p id="status">{card.status.toUpperCase()}</p>
             </div>
 

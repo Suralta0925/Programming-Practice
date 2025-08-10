@@ -1,0 +1,50 @@
+*{
+    user-select: none;
+}
+ 
+
+#container{
+    width: 93vw;
+    height: 100px;
+    display: flex;
+    position: fixed;
+    left: 15px;
+    bottom: 10px;
+    padding: 10px;
+    border: 5px solid black;
+    border-radius: 15px 15px 0 0;
+    background-color: white;
+    
+}
+
+.toolTip{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex:1;
+    border-right: 5px solid black;
+    cursor: pointer;
+}
+
+.icons{
+    display: none;
+    text-align: center;
+    width: 100%;
+    transition: 1s backgroundColor ease-in-out;
+}
+
+.ico{
+    height: 50px;
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.toolTip:hover{
+    background-color: aquamarine;
+}
+
+.toolTip:has(input[type="radio"]:checked){
+    background-color: aqua;
+}
